@@ -19,9 +19,9 @@ class App extends StatelessWidget {
                 color: Color.fromRGBO(20, 51, 51, 1),
               ),
               title: TextStyle(
-                fontSize: 24,
-                fontFamily: 'RobotoCondensed',
-              ),
+                  fontSize: 20,
+                  fontFamily: 'RobotoCondensed',
+                  fontWeight: FontWeight.bold),
             ),
       ),
       home: Home(),

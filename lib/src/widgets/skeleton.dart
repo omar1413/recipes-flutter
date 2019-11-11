@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Skelton extends StatelessWidget {
+class Skeleton extends StatelessWidget {
   final Widget body;
+  final Widget title;
 
-  const Skelton({Key key, this.body}) : super(key: key);
+  const Skeleton({Key key, this.body, this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DeliMeals'),
+        title: title,
       ),
       body: body,
     );
