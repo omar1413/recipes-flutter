@@ -6,6 +6,7 @@ class CategoriesGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView(
+      padding: const EdgeInsets.all(25.0),
       children: DUMMY_CATEGORIES.map((ele) {
         return CategoryItem(ele);
       }).toList(),
