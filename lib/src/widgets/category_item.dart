@@ -8,14 +8,10 @@ class CategoryItem extends StatelessWidget {
   const CategoryItem(this.category);
 
   void selectCategory(BuildContext ctx) {
-    Navigator.push(
-      ctx,
-      MaterialPageRoute(
-        builder: (_) {
-          return CategoryMeals(category.id, category.title);
-        },
-      ),
-    );
+    Navigator.pushNamed(ctx, CategoryMeals.route, arguments: {
+      'id': category.id,
+      'title': category.title,
+    });
   }
 
   @override

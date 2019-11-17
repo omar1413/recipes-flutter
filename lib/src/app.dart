@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recipes/src/screens/category_meals.dart';
+import 'package:recipes/src/screens/meal_details.dart';
 
 import 'screens/home.dart';
 
@@ -19,12 +21,24 @@ class App extends StatelessWidget {
                 color: Color.fromRGBO(20, 51, 51, 1),
               ),
               title: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'RobotoCondensed',
-                  fontWeight: FontWeight.bold),
+                fontSize: 20,
+                fontFamily: 'RobotoCondensed',
+                fontWeight: FontWeight.bold,
+              ),
             ),
       ),
       home: Home(),
+      routes: {
+        CategoryMeals.route: (_) => CategoryMeals(),
+        MealDetails.route: (_) => MealDetails(),
+      },
+      onUnknownRoute: (_) {
+        return MaterialPageRoute(
+          builder: (_) {
+            return Home();
+          },
+        );
+      },
     );
   }
 }
