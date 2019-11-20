@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/src/screens/categories_screen.dart';
+import 'package:recipes/src/widgets/app_drawer.dart';
 import 'package:recipes/src/widgets/skeleton.dart';
 import 'favorites_screen.dart';
 
@@ -31,6 +32,7 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return Skeleton(
+      drawer: AppDrawer(),
       title: Text(_pages[_selectedIndex]['title']),
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(

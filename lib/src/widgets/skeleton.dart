@@ -5,9 +5,15 @@ class Skeleton extends StatelessWidget {
   final Widget title;
   final PreferredSizeWidget bottom;
   final Widget bottomNavigationBar;
+  final Widget drawer;
 
   const Skeleton(
-      {Key key, this.body, this.title, this.bottom, this.bottomNavigationBar})
+      {Key key,
+      this.body,
+      this.title,
+      this.bottom,
+      this.bottomNavigationBar,
+      this.drawer})
       : super(key: key);
 
   @override
@@ -33,6 +39,7 @@ class Skeleton extends StatelessWidget {
               ),
             ),
       body: body,
+      drawer: drawer,
       bottomNavigationBar: bottomNavigationBar,
     );
   }
