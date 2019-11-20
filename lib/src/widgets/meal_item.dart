@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/src/models/meal.dart';
-import 'package:recipes/src/screens/meal_details.dart';
+import 'package:recipes/src/screens/meal_details_screen.dart';
+import 'package:recipes/src/widgets/frame_image.dart';
 
 class MealItem extends StatelessWidget {
   final String id;
@@ -46,7 +47,7 @@ class MealItem extends StatelessWidget {
   }
 
   void _selectMeal(BuildContext ctx) {
-    Navigator.pushNamed(ctx, MealDetails.route, arguments: id);
+    Navigator.pushNamed(ctx, MealDetailsScreen.route, arguments: id);
   }
 
   @override
@@ -67,7 +68,7 @@ class MealItem extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15.0),
                       topRight: Radius.circular(15.0)),
-                  child: Image.network(
+                  child: FrameImage(
                     imageUrl,
                     height: 250,
                     width: double.infinity,

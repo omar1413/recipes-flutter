@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:recipes/src/screens/category_meals.dart';
-import 'package:recipes/src/screens/meal_details.dart';
+import 'package:recipes/src/screens/category_meals_screen.dart';
+import 'package:recipes/src/screens/meal_details_screen.dart';
+import 'package:recipes/src/screens/tabs_screen.dart';
 
-import 'screens/home.dart';
+import 'screens/categories_screen.dart';
 
 class App extends StatelessWidget {
   @override
@@ -27,15 +28,15 @@ class App extends StatelessWidget {
               ),
             ),
       ),
-      home: Home(),
+      home: TabsScreen(),
       routes: {
-        CategoryMeals.route: (_) => CategoryMeals(),
-        MealDetails.route: (_) => MealDetails(),
+        CategoryMealsScreen.route: (_) => CategoryMealsScreen(),
+        MealDetailsScreen.route: (_) => MealDetailsScreen(),
       },
       onUnknownRoute: (_) {
         return MaterialPageRoute(
           builder: (_) {
-            return Home();
+            return CategoriesScreen();
           },
         );
       },
