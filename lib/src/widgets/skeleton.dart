@@ -6,6 +6,7 @@ class Skeleton extends StatelessWidget {
   final PreferredSizeWidget bottom;
   final Widget bottomNavigationBar;
   final Widget drawer;
+  final Widget floatingActionButton;
 
   const Skeleton(
       {Key key,
@@ -13,7 +14,8 @@ class Skeleton extends StatelessWidget {
       this.title,
       this.bottom,
       this.bottomNavigationBar,
-      this.drawer})
+      this.drawer,
+      this.floatingActionButton})
       : super(key: key);
 
   @override
@@ -41,6 +43,7 @@ class Skeleton extends StatelessWidget {
       body: body,
       drawer: drawer,
       bottomNavigationBar: bottomNavigationBar,
+      floatingActionButton: floatingActionButton,
     );
   }
 }

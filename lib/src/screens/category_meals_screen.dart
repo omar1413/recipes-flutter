@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/src/dummy-data.dart';
+import 'package:recipes/src/models/meal.dart';
 import 'package:recipes/src/widgets/meal_item.dart';
 import 'package:recipes/src/widgets/skeleton.dart';
 
-class CategoryMealsScreen extends StatelessWidget {
+import 'meal_details_screen.dart';
+
+class CategoryMealsScreen extends StatefulWidget {
   static const String route = '/category_meals';
+
+  @override
+  _CategoryMealsScreenState createState() => _CategoryMealsScreenState();
+}
+
+class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
+  String title;
+  List<Meal> meals;
+  bool firstInit = false;
+
   @override
   Widget build(BuildContext context) {
-    final routeArgs =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
-    final id = routeArgs['id'];
-    final title = routeArgs['title'];
-    final meals = DUMMY_MEALS.where((meal) {
-      return meal.categories.contains(id);
-    }).toList();
-
     return Skeleton(
       title: Text(title),
       body: ListView.builder(
@@ -27,10 +32,39 @@ class CategoryMealsScreen extends StatelessWidget {
             duration: meal.duration,
             complexity: meal.complexity,
             affordability: meal.affordability,
+            onTap: _selectMeal,
           );
         },
         itemCount: meals.length,
       ),
     );
+  }
+
+  void _selectMeal(String id) {
+    Navigator.pushNamed(context, MealDetailsScreen.route, arguments: id)
+        .then((result) {
+      if (result != null) {
+        setState(() {
+          print(meals);
+          meals.removeWhere((meal) => meal.id == result);
+          print(meals);
+        });
+      }
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!firstInit) {
+      final routeArgs =
+          ModalRoute.of(context).settings.arguments as Map<String, String>;
+      final id = routeArgs['id'];
+      title = routeArgs['title'];
+      meals = DUMMY_MEALS.where((meal) {
+        return meal.categories.contains(id);
+      }).toList();
+      firstInit = true;
+    }
   }
 }

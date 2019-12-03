@@ -32,7 +32,7 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return Skeleton(
-      drawer: AppDrawer(),
+      drawer: AppDrawer('/'),
       title: Text(_pages[_selectedIndex]['title']),
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
