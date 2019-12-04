@@ -6,6 +6,16 @@ import 'package:recipes/src/widgets/skeleton.dart';
 class MealDetailsScreen extends StatelessWidget {
   static const String route = '/meal_details';
 
+  final Function(String) addFavouriteMeal;
+  final Function(String) removeFavouriteMeal;
+  final bool Function(String) isFavouriteMeal;
+
+  MealDetailsScreen({
+    @required this.addFavouriteMeal,
+    @required this.removeFavouriteMeal,
+    @required this.isFavouriteMeal,
+  });
+
   Widget buildTitleSection(BuildContext context, String title) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -82,9 +92,17 @@ class MealDetailsScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete),
+        child: isFavouriteMeal(id) ? Icon(Icons.star) : Icon(Icons.star_border),
         onPressed: () {
-          Navigator.pop(context, id);
+          print('clicked');
+          if (isFavouriteMeal(id)) {
+            print('clicked1');
+
+            removeFavouriteMeal(id);
+          } else {
+            print('clicked2');
+            addFavouriteMeal(id);
+          }
         },
       ),
     );

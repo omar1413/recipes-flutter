@@ -7,7 +7,10 @@ import 'package:recipes/src/widgets/skeleton.dart';
 import 'meal_details_screen.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
+  final List<Meal> meals;
   static const String route = '/category_meals';
+
+  CategoryMealsScreen(this.meals);
 
   @override
   _CategoryMealsScreenState createState() => _CategoryMealsScreenState();
@@ -41,16 +44,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   }
 
   void _selectMeal(String id) {
-    Navigator.pushNamed(context, MealDetailsScreen.route, arguments: id)
-        .then((result) {
-      if (result != null) {
-        setState(() {
-          print(meals);
-          meals.removeWhere((meal) => meal.id == result);
-          print(meals);
-        });
-      }
-    });
+    Navigator.pushNamed(context, MealDetailsScreen.route, arguments: id);
   }
 
   @override
@@ -61,7 +55,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
           ModalRoute.of(context).settings.arguments as Map<String, String>;
       final id = routeArgs['id'];
       title = routeArgs['title'];
-      meals = DUMMY_MEALS.where((meal) {
+      meals = widget.meals.where((meal) {
         return meal.categories.contains(id);
       }).toList();
       firstInit = true;

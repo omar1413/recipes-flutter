@@ -10,7 +10,7 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final Function onTap;
+  final Function(String) onTap;
 
   MealItem({
     @required this.id,
